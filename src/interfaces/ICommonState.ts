@@ -6,7 +6,7 @@ import {IRateLimits} from './IRateLimits';
 export interface ICommonState {
     channels: string[];
     organisationInfo: IOrganisationInfo;
-    repoInfo: IRepoInfo;
+    channelInfo: IRepoInfo;
     repoContributors: IContributor[];
     rateLimits: IRateLimits;
     releaseDates: string[];

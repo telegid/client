@@ -5,7 +5,7 @@ export const mapStateToProps = (state: ICommonState): { data: ISidebarViewData }
     return {
         data: {
             channels: state.channels,
-            repoInfo: state.repoInfo,
+            channelInfo: state.channelInfo,
             isReposLoading: state.isReposLoading,
         }
     };

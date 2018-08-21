@@ -9,7 +9,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: IOrga
                 dispatch<any>({type: RootActions.OrganisationInfoRequested, payload: {releaseDate: payload}});
             },
             requestRepoInfoAction: (payload: any) => {
-                dispatch<any>({type: RootActions.RepoInfoRequested, payload});
+                dispatch<any>({type: RootActions.ChannelInfoRequested, payload});
             }
         }
     };

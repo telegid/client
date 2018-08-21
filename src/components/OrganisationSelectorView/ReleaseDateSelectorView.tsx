@@ -41,8 +41,6 @@ export class ReleaseDateSelectorView extends Component<IOrganisationSelectorView
 }
 
 const getReleaseDatesOptions = (releaseDates: string[]) => {
-    console.log(releaseDates);
-
     return releaseDates.map((releaseDate: string) => {
         return <option key={releaseDate} value={releaseDate}>{releaseDate}</option>;
     });

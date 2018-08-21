@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {OrganisationViewArea} from './OrganisationView.style';
-import {RepoDetailsView} from '../RepoDetailsView/RepoDetailsView.sfc';
+import {ChannelDetailsView} from '../ChannelDetailsView/ChannelDetailsView.sfc';
 import {IOrganisationViewData} from './interfaces/IOrganisationViewData';
 import {IOrganisationViewActions} from './interfaces/IOrganisationViewActions';
 import {Route, RouteComponentProps, Switch} from 'react-router';
@@ -19,7 +19,7 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
 
     const {releaseDate} = props.match.params;
     const {
-        repoInfo,
+        channelInfo,
         repoContributors,
         organisationInfo,
         rateLimits,
@@ -58,9 +58,9 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
 
                     <Route exact path={Config.Routes.Repo}
                            render={() => (
-                               <RepoDetailsView
+                               <ChannelDetailsView
                                    data={{
-                                       repoInfo,
+                                       channelInfo,
                                        repoContributors,
                                        isRepoInfoLoading,
                                        isRepoContributorsLoading

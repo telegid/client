@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RepoDetailsViewArea = styled.div`
+export const ChannelDetailsViewArea = styled.div`
   background: pink;
   flex-grow: 1;
 `;

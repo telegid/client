@@ -1,7 +1,7 @@
 import {IRepoInfo} from 'src/interfaces/IRepoInfo';
 
 export interface ISidebarViewData {
-    repoInfo: IRepoInfo;
+    channelInfo: IRepoInfo;
     channels: string[];
     isReposLoading: boolean;
 }

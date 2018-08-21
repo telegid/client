@@ -2,14 +2,11 @@ import {ICommonState} from 'src/interfaces/ICommonState';
 import {IOrganisationViewData} from 'src/components/OrganisationView/interfaces/IOrganisationViewData';
 
 export const mapStateToProps = (state: ICommonState): { data: IOrganisationViewData } => {
-
-    console.log(state)
-
     return {
         data: {
             organisationInfo: state.organisationInfo,
             channels: state.channels,
-            repoInfo: state.repoInfo,
+            channelInfo: state.channelInfo,
             repoContributors: state.repoContributors,
             rateLimits: state.rateLimits,
             releaseDates: state.releaseDates,

@@ -12,8 +12,8 @@ export enum RootActions {
     OrganisationInfoRequested = 'RootActions.OrganisationInfoRequested',
     OrganisationInfoFulfilled = 'RootActions.OrganisationInfoFulfilled',
 
-    RepoInfoRequested = 'RootActions.RepoInfoRequested',
-    RepoInfoFulfilled = 'RootActions.RepoInfoFulfilled',
+    ChannelInfoRequested = 'RootActions.ChannelInfoRequested',
+    ChannelInfoFulfilled = 'RootActions.ChannelInfoFulfilled',
 
     ReleaseDatesRequested = 'RootActions.ReleaseDatesRequested',
     ReleaseDatesFulfilled = 'RootActions.ReleaseDatesFulfilled'

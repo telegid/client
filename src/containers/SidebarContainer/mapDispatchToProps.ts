@@ -7,7 +7,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: ISide
     return {
         actions: {
             requestRepoInfoAction: (payload: any) => {
-                dispatch<any>({type: RootActions.RepoInfoRequested, payload});
+                dispatch<any>({type: RootActions.ChannelInfoRequested, payload});
             },
             fetchReposAction: (releaseDate: string) => {
 

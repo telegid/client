@@ -5,7 +5,7 @@ import {IRateLimits} from 'src/interfaces/IRateLimits';
 
 export interface IOrganisationViewData {
     organisationInfo: IOrganisationInfo;
-    repoInfo: IRepoInfo;
+    channelInfo: IRepoInfo;
     repoContributors: IContributor[];
     channels: string[];
     rateLimits: IRateLimits;

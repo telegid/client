@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RepoDetailsViewArea = styled.div`
+export const ChannelDetailsViewArea = styled.div`
   background: white;
   flex-grow: 1;
   display: flex;
@@ -8,13 +8,13 @@ export const RepoDetailsViewArea = styled.div`
   position: relative;
 `;
 
-export const RepoInformationArea = styled.div`
+export const ChannelInformationArea = styled.div`
   background: rgba(0,0,0,0.05);
-  padding: 20px;
   position: relative;
   flex-shrink: 0;
   flex-basis: 200px;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  overflow:auto;
 `;
 
 export const ContributorsListAreaWrapper = styled.div`

@@ -27,7 +27,7 @@ export const initialRateLimits = {
 export const initialCommonState: ICommonState = {
     organisationInfo: initialOrganisationInfo,
     channels: [],
-    repoInfo: initialRepoInfo,
+    channelInfo: initialRepoInfo,
     repoContributors: [],
     releaseDates: [],
     rateLimits: initialRateLimits,
