@@ -6,7 +6,9 @@ export const mapStateToProps = (state: ICommonState): { data: IOrganisationViewD
         data: {
             organisationInfo: state.organisationInfo,
             channels: state.channels,
-            channelInfo: state.channelInfo,
+            channelRaw: state.channelRaw,
+            channelByDay: state.channelByDay,
+
             repoContributors: state.repoContributors,
             rateLimits: state.rateLimits,
             releaseDates: state.releaseDates,

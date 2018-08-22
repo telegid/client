@@ -6,7 +6,8 @@ export const saveChannelInfoReducer = (state: ICommonState, action: AnyAction): 
     console.log(action)
     return {
         ...state,
-        channelInfo: action.payload.data,
+        channelRaw: action.payload.data.raw,
+        channelByDay: action.payload.data.byday,
         isRepoInfoLoading: false,
     };
 };

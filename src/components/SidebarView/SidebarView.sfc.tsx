@@ -28,7 +28,7 @@ const getReposTitles = (props: ISidebarViewProps) => {
                 </ListLink>
             );
             /*
-                return props.data.channelInfo.name === channelId
+                return props.data.channelRaw.name === channelId
                     ?
                     <ActiveLabel key={index}>{channelId}
                         {/!*<WatchersCount>{repo.watchers_count} watchers</WatchersCount>*!/}

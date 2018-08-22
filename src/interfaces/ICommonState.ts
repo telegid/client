@@ -1,12 +1,14 @@
 import {IOrganisationInfo} from './IOrganisationInfo';
-import {IRepoInfo} from './IRepoInfo';
 import {IContributor} from './IContributor';
 import {IRateLimits} from './IRateLimits';
 
 export interface ICommonState {
     channels: string[];
     organisationInfo: IOrganisationInfo;
-    channelInfo: IRepoInfo;
+
+    channelRaw: string;
+    channelByDay: any[];
+
     repoContributors: IContributor[];
     rateLimits: IRateLimits;
     releaseDates: string[];

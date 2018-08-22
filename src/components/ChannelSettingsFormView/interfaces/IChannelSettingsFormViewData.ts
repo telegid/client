@@ -1,6 +1,6 @@
 import {IContributor} from 'src/interfaces/IContributor';
 
-export interface IChannelDetailsViewData {
+export interface IChannelSettingsFormViewData {
     channelRaw: string;
     channelByDay: any[];
 

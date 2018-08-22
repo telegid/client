@@ -1,57 +1,18 @@
 import * as React from 'react';
 import {ChannelDetailsViewArea, ChannelInformationArea, ContributorImage, ContributorLabel, ContributorLink, ContributorName, ContributorsListAreaWrapper} from './ChannelDetailsView.style';
 import {IContributor} from '../../interfaces/IContributor';
-import {Table, Tabs, Tag} from 'antd';
+import {Button, Col, Row, Table, Tabs} from 'antd';
 import {IChannelDetailsViewData} from './interfaces/IChannelDetailsViewData';
 import {Spinner} from '../Spinner/Spinner.sfc';
+import {tableColumns} from './utils/tableColumns';
+import {DaysNames} from '../../constants/DaysNames';
+import {ChannelSettingsFormView} from '../ChannelSettingsFormView/ChannelSettingsFormView.sfc';
 
 export interface IChannelDetailsViewProps {
     data: IChannelDetailsViewData;
 }
 
 export const ChannelDetailsView = (props: IChannelDetailsViewProps) => {
-
-    const dataSource = [{
-        key: '1',
-        time: '06.00',
-        age: 12,
-        content: 'Невероятные изобретения. Сезон: 2. 16-я серия. Хорошо это или плохо, но конфликт и потребность изучать неизведанное двигают вперед развитие технологий человечества. Так уж случилось, что изобретательнее всего люди становятся в процессе разрушения. (2016)'
-    }, {
-        key: '2',
-        time: '12.55',
-        age: 0,
-        content: 'Полигон. Сезон: 1. 6-я серия. В этой серии мы катаемся на американских горках, запускаем змея и пытаемся растянуть БМД-2.'
-    }];
-
-    const columns = [
-        {
-            title: 'Время',
-            dataIndex: 'time',
-            key: 'time',
-            width: 100
-        },
-        {
-            title: 'Контент',
-            dataIndex: 'content',
-            key: 'content',
-        },
-        {
-            title: 'Возраст',
-            dataIndex: 'age',
-            key: 'age',
-            width: 100,
-            render: (tag: string) =>
-                (
-                    <span><Tag color='blue' key={tag}>{tag}+</Tag></span>
-                )
-        },
-        {
-            title: 'Категория',
-            dataIndex: 'category',
-            key: 'category',
-            width: 120,
-        }
-    ];
 
     return (
         <ChannelDetailsViewArea>
@@ -61,27 +22,8 @@ export const ChannelDetailsView = (props: IChannelDetailsViewProps) => {
 
                     <Tabs.TabPane tab='Обработка' key='process'>
                         <Tabs defaultActiveKey='1' animated={false}>
-                            <Tabs.TabPane tab='Понедельник' key='1'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab='Вторник' key='2'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab='Среда' key='3'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab='Четверг' key='4'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab='Пятница' key='5'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab='Суббота' key='6'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab='Воскресенье' key='7'>
-                                <Table dataSource={dataSource} columns={columns}/>
-                            </Tabs.TabPane>
+
+                            {getDaysTabs(props.data.channelByDay)}
                         </Tabs>
                     </Tabs.TabPane>
 
@@ -93,13 +35,15 @@ export const ChannelDetailsView = (props: IChannelDetailsViewProps) => {
                                     ?
                                     <Spinner/>
                                     :
-                                    <pre>{props.data.channelInfo}</pre>
+                                    <pre>{props.data.channelRaw}</pre>
                             }
                         </ChannelInformationArea>
 
                     </Tabs.TabPane>
 
-                    <Tabs.TabPane tab='Настройки' key='settings'>Content of Tab Pane 3</Tabs.TabPane>
+                    <Tabs.TabPane tab='Настройки' key='settings'>
+                        <ChannelSettingsFormView/>
+                    </Tabs.TabPane>
                 </Tabs>
 
 
@@ -117,4 +61,39 @@ const getContributorsList = (repoContributors: IContributor[]) => {
             </ContributorLink>
         </ContributorLabel>;
     });
+};
+const getDaysTabs = (channelByDay: any[]) => {
+    return (
+        channelByDay.map((day, index) => {
+
+            const dayData = day.map((row: { time: string, age: number, remainingPart: string, original: string }, rowIndex: number) => {
+                return {
+                    key: rowIndex,
+                    time: row.time,
+                    age: row.age > -1 ? row.age : 'N/A',
+                    content: row.remainingPart,
+                    original: row.original
+                };
+            });
+
+            return (
+                <Tabs.TabPane tab={DaysNames[index]} key={index}>
+                    <Row>
+                        <Col span={12}>
+                            <Button type='primary'>Обработать неделю</Button>
+                        </Col>
+                    </Row>
+                    <Table
+                        dataSource={dayData}
+                        columns={tableColumns}
+                        expandedRowRender={(record: { time: string, age: number, remainingPart: string, original: string }) => <p style={{margin: 0, fontSize: '12px'}}>{record.original}</p>}
+                        pagination={false}
+
+                    />
+                </Tabs.TabPane>
+
+            );
+
+        })
+    );
 };

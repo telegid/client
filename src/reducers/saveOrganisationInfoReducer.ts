@@ -6,11 +6,6 @@ export const saveOrganisationInfoReducer = (state: ICommonState, action: AnyActi
         ...state,
         organisationInfo: action.payload,
         isOrganisationDetailsLoading: false,
-        channelInfo: {
-            name: '',
-            description: '',
-            subscribers_count: -1,
-            watchers_count: -1,
-        }
+        channelRaw: ''
     };
 };

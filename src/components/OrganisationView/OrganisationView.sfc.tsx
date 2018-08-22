@@ -19,7 +19,8 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
 
     const {releaseDate} = props.match.params;
     const {
-        channelInfo,
+        channelRaw,
+        channelByDay,
         repoContributors,
         organisationInfo,
         rateLimits,
@@ -60,7 +61,8 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
                            render={() => (
                                <ChannelDetailsView
                                    data={{
-                                       channelInfo,
+                                       channelByDay,
+                                       channelRaw,
                                        repoContributors,
                                        isRepoInfoLoading,
                                        isRepoContributorsLoading

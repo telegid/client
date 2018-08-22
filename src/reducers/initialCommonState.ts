@@ -11,13 +11,6 @@ export const initialOrganisationInfo = {
     html_url: '',
 };
 
-export const initialRepoInfo = {
-    name: '',
-    description: '',
-    subscribers_count: -1,
-    watchers_count: -1,
-};
-
 export const initialRateLimits = {
     rateLimit: 0,
     rateLimitRemaining: 0,
@@ -27,7 +20,8 @@ export const initialRateLimits = {
 export const initialCommonState: ICommonState = {
     organisationInfo: initialOrganisationInfo,
     channels: [],
-    channelInfo: initialRepoInfo,
+    channelRaw: '',
+    channelByDay: [],
     repoContributors: [],
     releaseDates: [],
     rateLimits: initialRateLimits,
