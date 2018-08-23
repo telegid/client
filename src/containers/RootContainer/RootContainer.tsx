@@ -8,6 +8,7 @@ import {ChannelSettingsFormView} from '../../components/ChannelSettingsFormView/
 import {connect} from 'react-redux';
 import {mapStateToProps} from './mapStateToProps';
 import {mapDispatchToProps} from './mapDispatchToProps';
+import {SyncContainer} from '../SyncContainer/SyncContainer';
 
 interface IRootContainerProps {
     data: any;
@@ -49,7 +50,8 @@ const Root: SFC<IRootContainerProps> = (props) => {
                                     }}
                                 />
                                 :
-                                null
+                                <SyncContainer/>
+
                         }
 
                     </Col>
