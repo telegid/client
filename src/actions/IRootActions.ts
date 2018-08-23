@@ -3,8 +3,8 @@ export interface IRootActions {
 }
 
 export enum RootActions {
-    RateLimitsUpdated = 'RootActions.RateLimitsUpdated',
-    LimitError = 'RootActions.LimitError',
+
+    SetActiveChannel = 'RootActions.SetActiveChannel',
 
     ChannelsRequested = 'RootActions.ChannelsRequested',
     ChannelsFulfilled = 'RootActions.ChannelsFulfilled',

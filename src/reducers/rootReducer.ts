@@ -7,7 +7,7 @@ import {saveOrganisationInfoReducer} from './saveOrganisationInfoReducer';
 import {saveChannelInfoReducer} from './saveChannelInfoReducer';
 import {saveReleaseDatesReducer} from './saveReleaseDatesReducer';
 import {saveChannelsReducer} from './saveChannelsReducer';
-import {saveRateLimitsReducer} from './saveRateLimitsReducer';
+import {setActiveChannelReducer} from './setActiveChannelReducer';
 import {fetchRepoInfoReducer} from './fetchRepoInfoReducer';
 import {fetchReleaseDatesReducer} from './fetchReleaseDatesReducer';
 
@@ -15,8 +15,8 @@ export const rootReducer: Reducer<ICommonState> = (state: ICommonState, action: 
 
     switch (action.type) {
 
-        case RootActions.RateLimitsUpdated:
-            return saveRateLimitsReducer(state, action);
+        case RootActions.SetActiveChannel:
+            return setActiveChannelReducer(state, action);
 
         case RootActions.ChannelsRequested:
             return fetchChannelsReducer(state, action);

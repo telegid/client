@@ -26,6 +26,7 @@ const ChannelSettingsForm = (props: IChannelDetailsViewProps) => {
                     label='Название канала'
                 >
                     {getFieldDecorator('channelLabel', {
+                        initialValue: props.data.channelSettings.label,
                         rules: [{
                             type: 'channelLabel', message: 'The input is not valid E-mail!',
                         }, {

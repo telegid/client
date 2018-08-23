@@ -1,53 +1,60 @@
 import * as React from 'react';
-import {OrganisationViewArea} from './ChannelsView.style';
-import {ChannelDetailsView} from '../ChannelDetailsView/ChannelDetailsView.sfc';
+import {ChannelsViewArea} from './ChannelsView.style';
 import {IChannelsViewData} from './interfaces/IChannelsViewData';
 import {IChannelsViewActions} from './interfaces/IChannelsViewActions';
-import {Route, RouteComponentProps, Switch} from 'react-router';
-import {OrganisationDetailsView} from '../OrganisationDetailsView/OrganisationDetailsView';
-import {HeaderView} from '../HeaderView/HeaderView.sfc';
-import {history} from 'src/store/store';
-import {Config} from 'src/config';
-import {SidebarContainer} from 'src/containers/SidebarContainer/SidebarContainer';
+import {RouteComponentProps} from 'react-router';
+import {Table} from 'antd';
+import {ChannelsTableColumns} from './utils/ChannelsTableColumns';
 
-export interface IOrganisationViewProps extends RouteComponentProps<any> {
+
+export interface IChannelsViewProps extends RouteComponentProps<any> {
     data: IChannelsViewData;
     actions: IChannelsViewActions;
 }
 
-export const ChannelsView = (props: IOrganisationViewProps) => {
+export const ChannelsView = (props: IChannelsViewProps) => {
+
+    console.log(props);
 
     const {releaseDate} = props.match.params;
     const {
         channelRaw,
         channelByDay,
         repoContributors,
-        organisationInfo,
-        rateLimits,
 
         isOrganisationDetailsLoading,
         isRepoInfoLoading,
         isRepoContributorsLoading,
-
+        channels,
         releaseDates
     } = props.data;
 
+    const channelsData = Object.keys(channels).map((channelId, rowIndex: number) => {
+        return {
+            key: rowIndex,
+            id: channelId,
+            label: channels[channelId]
+        };
+    });
+
     return (
         <>
-            <HeaderView
-                data={{releaseDates, releaseDate, rateLimits}}
-                actions={{
-                    pushRouteToOrganisationPage: (orgId: string) => {
-                        history.push(`/date/${orgId}`);
-                    }
-                }}
-            />
+            <ChannelsViewArea>
 
-            <OrganisationViewArea>
-                <SidebarContainer/>
+
+                <Table
+                    dataSource={channelsData}
+                    columns={ChannelsTableColumns}
+                    pagination={false}
+
+                />
+
+                {/*<SidebarContainer/>*/}
+
+                {/*
                 <Switch>
 
-                    <Route exact path={Config.Routes.Organisation}
+                    <Route exact path={Config.Routes.Channels}
                            render={() => (
                                <OrganisationDetailsView
                                    data={{
@@ -57,7 +64,7 @@ export const ChannelsView = (props: IOrganisationViewProps) => {
                                />)}
                     />
 
-                    <Route exact path={Config.Routes.Repo}
+                    <Route exact path={Config.Routes.Channel}
                            render={() => (
                                <ChannelDetailsView
                                    data={{
@@ -72,11 +79,11 @@ export const ChannelsView = (props: IOrganisationViewProps) => {
 
                     />
 
-                    <Route>Empty container</Route>
-
                 </Switch>
+*/}
 
-            </OrganisationViewArea>
+
+            </ChannelsViewArea>
         </>
     );
 

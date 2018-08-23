@@ -32,7 +32,7 @@ function* fetchOrganisationInfoSaga (action: IUserAction<RootActions.Organisatio
 function* fetchChannelsListSaga (action: AnyAction) {
 
     try {
-        const payload: IDataResponse<string[]> = yield call(fetchChannels, action.payload.releaseDate);
+        const payload: IDataResponse<string[]> = yield call(fetchChannels);
 
         yield put({type: RootActions.ChannelsFulfilled, payload});
 
@@ -44,7 +44,7 @@ function* fetchChannelsListSaga (action: AnyAction) {
 function* fetchChannelInfoSaga (action: AnyAction) {
 
     try {
-        const payload: IDataResponse<IRepoInfo> = yield call(fetchChannelInfo, action.payload.releaseDate, action.payload.repoId);
+        const payload: IDataResponse<IRepoInfo> = yield call(fetchChannelInfo, action.payload.releaseDate, action.payload.channelId);
 
         yield put({type: RootActions.ChannelInfoFulfilled, payload});
 

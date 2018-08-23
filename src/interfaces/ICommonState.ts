@@ -1,16 +1,15 @@
-import {IOrganisationInfo} from './IOrganisationInfo';
 import {IContributor} from './IContributor';
-import {IRateLimits} from './IRateLimits';
+import {IChannelSet} from '../components/ChannelsView/interfaces/IChannelsViewData';
 
 export interface ICommonState {
-    channels: string[];
-    organisationInfo: IOrganisationInfo;
+    activeChannelId: string;
+    activeChannelLabel: string;
+    channels: IChannelSet;
 
     channelRaw: string;
     channelByDay: any[];
 
     repoContributors: IContributor[];
-    rateLimits: IRateLimits;
     releaseDates: string[];
 
 

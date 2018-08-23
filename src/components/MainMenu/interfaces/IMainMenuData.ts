@@ -1,7 +1,7 @@
 import {IChannelSet} from '../../ChannelsView/interfaces/IChannelsViewData';
 
-export interface ISidebarViewData {
-    channelRaw: string;
+export interface IMainMenuData {
+    activeChannelId: string;
+    activeChannelLabel: string;
     channels: IChannelSet;
-    isReposLoading: boolean;
 }

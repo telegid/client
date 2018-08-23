@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {SFC} from 'react';
-import {HeaderViewArea, LightLink, LogoArea, OrganisationSelectorArea, RatesLimitsArea} from './HeaderView.style';
-import {ReleaseDateSelectorView} from '../OrganisationSelectorView/ReleaseDateSelectorView';
+import {HeaderViewArea, LightLink, LogoArea} from './HeaderView.style';
 import {IHeaderViewData} from './interfaces/IHeaderViewData';
 import {IHeaderViewActions} from './interfaces/IHeaderViewActions';
+import {Config} from '../../config';
 
 interface IHeaderViewProps {
     data: IHeaderViewData;
@@ -12,21 +12,12 @@ interface IHeaderViewProps {
 
 export const HeaderView: SFC<IHeaderViewProps> = (props) => {
 
-    const {releaseDate, releaseDates, rateLimits} = props.data;
-
     return (
         <HeaderViewArea>
 
             <LogoArea>
-                <LightLink to={`/date/${releaseDate}`}>Telegid</LightLink>
+                <LightLink to={Config.Routes.Home}>Телегид</LightLink>
             </LogoArea>
-
-            <OrganisationSelectorArea>
-
-                <ReleaseDateSelectorView
-                    data={{releaseDates, releaseDate}}
-                />
-            </OrganisationSelectorArea>
 
         </HeaderViewArea>
     );

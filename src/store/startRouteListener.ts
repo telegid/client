@@ -5,6 +5,7 @@ import {Config} from '../config';
 import {RootActions} from '../actions/IRootActions';
 
 enum RoutesEnum {
+    Home = 'Home',
     Date = 'DateRoute',
     Channel = 'ChannelRoute',
     Unknown = 'Unknown'
@@ -27,16 +28,16 @@ const getCurrentRoute = (pathname: string): { route: RoutesEnum; routeMatch?: ma
     let routeMatch;
 
     routeMatch = matchPath(pathname, {
-        path: Config.Routes.Organisation,
+        path: Config.Routes.Home,
         exact: true
     });
 
     if (routeMatch !== null) {
-        return {route: RoutesEnum.Date, routeMatch};
+        return {route: RoutesEnum.Home, routeMatch};
     }
 
     const repoRoute = matchPath(pathname, {
-        path: Config.Routes.Repo,
+        path: Config.Routes.Channel,
         exact: true
     });
 
@@ -57,10 +58,15 @@ const dispatchRouteActions = (pathname: string, store: Store) => {
 };
 
 const dispatchRouteFetch = (store: Store, route: RoutesEnum, routeMatch: match<any>) => {
+    console.log(route);
+
     switch (route) {
+        case RoutesEnum.Home:
+            store.dispatch({type: RootActions.ChannelsRequested, payload: routeMatch.params});
+            break;
+
         case RoutesEnum.Date:
             store.dispatch({type: RootActions.ReleaseDatesRequested, payload: routeMatch.params});
-            store.dispatch({type: RootActions.ChannelsRequested, payload: routeMatch.params});
             break;
 
         case RoutesEnum.Channel:

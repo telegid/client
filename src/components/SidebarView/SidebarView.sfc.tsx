@@ -19,7 +19,9 @@ export const SidebarView = (props: ISidebarViewProps) => (
 
 const getReposTitles = (props: ISidebarViewProps) => {
 
-    return props.data.channels.map((channelId: string, index: number) => {
+    const {channels} = props.data;
+
+    return Object.keys(channels).map((channelId, index: number) => {
             return (
                 <ListLink key={index}
                           to={`/date/${props.match.params.releaseDate}/${channelId}`}>
