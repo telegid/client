@@ -58,8 +58,6 @@ const dispatchRouteActions = (pathname: string, store: Store) => {
 };
 
 const dispatchRouteFetch = (store: Store, route: RoutesEnum, routeMatch: match<any>) => {
-    console.log(route);
-
     switch (route) {
         case RoutesEnum.Home:
             store.dispatch({type: RootActions.ChannelsRequested, payload: routeMatch.params});

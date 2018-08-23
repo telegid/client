@@ -13,8 +13,6 @@ export interface IChannelsViewProps extends RouteComponentProps<any> {
 
 export const SyncView = (props: IChannelsViewProps) => {
 
-    console.log(props);
-
     const {releaseDate} = props.match.params;
     const {
         channelRaw,

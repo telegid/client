@@ -16,8 +16,6 @@ interface IRootContainerProps {
 }
 
 const Root: SFC<IRootContainerProps> = (props) => {
-        console.log(props);
-
         const {activeChannelLabel, activeChannelId} = props.data;
 
         return (

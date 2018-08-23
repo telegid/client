@@ -2,15 +2,15 @@ import {call, put, takeEvery} from 'redux-saga/effects';
 import {RootActions} from '../actions/IRootActions';
 import {AnyAction} from 'redux';
 import {IUserAction} from 'src/interfaces/IUserAction';
-import {fetchOrganisationInfo} from '../api/github/fetchOrganisationInfo';
-import {fetchChannels} from '../api/github/fetchChannels';
-import {fetchChannelInfo} from '../api/github/fetchChannelInfo';
-import {fetchReleaseDates} from '../api/github/fetchReleaseDates';
+import {fetchOrganisationInfo} from '../api/telegid/fetchOrganisationInfo';
+import {fetchChannels} from '../api/telegid/fetchChannels';
+import {fetchChannelInfo} from '../api/telegid/fetchChannelInfo';
+import {fetchReleaseDates} from '../api/telegid/fetchReleaseDates';
 import {IDataResponse} from '../interfaces/IDataResponse';
 import {IOrganisationInfo} from '../interfaces/IOrganisationInfo';
 import {IRepoInfo} from '../interfaces/IRepoInfo';
 import {IContributor} from '../interfaces/IContributor';
-import {fetchSyncStatus} from '../api/github/fetchSyncStatus';
+import {fetchSyncStatus} from '../api/telegid/fetchSyncStatus';
 
 export function* telegidConnectionSaga () {
     yield takeEvery(RootActions.OrganisationInfoRequested, fetchOrganisationInfoSaga);
@@ -36,7 +36,7 @@ function* fetchChannelsListSaga (action: AnyAction) {
     try {
         const payload: IDataResponse<string[]> = yield call(fetchChannels);
 
-        yield put({type: RootActions.ChannelsFulfilled, payload});
+        // yield put({type: RootActions.ChannelsFulfilled, payload});
 
     } catch (error) {
         console.error(error);

@@ -8,8 +8,7 @@ import {rootSaga} from '../sagas/rootSaga';
 import {rootReducer} from 'src/reducers/rootReducer';
 import {initialCommonState} from '../reducers/initialCommonState';
 import {startRouteListener} from './startRouteListener';
-import * as nes from 'nes';
-
+import {RootActions} from '../actions/IRootActions';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,19 +24,14 @@ export const store = createStore(
     )
 );
 
-export const ws = new nes.Client('ws://localhost:8000');
-ws.connect().then(() => {
-    ws.subscribe('/sync/status', (update, flags) => {
-        console.log(update);
-        console.log(flags);
+export const ws = new WebSocket('ws://localhost:8000');
+
+ws.addEventListener('open', () => {
+    sagaMiddleware.run(rootSaga);
+    startRouteListener(history, store);
+
+    ws.addEventListener('message', (msg) => {
+        store.dispatch({type: RootActions.ChannelsFulfilled, payload: JSON.parse(msg.data)});
     });
-});
 
-/*
-wsConnection.connect().then(() => {
-    wsConnection.request('hello');  // Can also request '/h'
 });
-*/
-
-sagaMiddleware.run(rootSaga);
-startRouteListener(history, store);
