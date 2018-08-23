@@ -10,12 +10,14 @@ import {IDataResponse} from '../interfaces/IDataResponse';
 import {IOrganisationInfo} from '../interfaces/IOrganisationInfo';
 import {IRepoInfo} from '../interfaces/IRepoInfo';
 import {IContributor} from '../interfaces/IContributor';
+import {fetchSyncStatus} from '../api/github/fetchSyncStatus';
 
 export function* telegidConnectionSaga () {
     yield takeEvery(RootActions.OrganisationInfoRequested, fetchOrganisationInfoSaga);
     yield takeEvery(RootActions.ChannelsRequested, fetchChannelsListSaga);
     yield takeEvery(RootActions.ChannelInfoRequested, fetchChannelInfoSaga);
     yield takeEvery(RootActions.ReleaseDatesRequested, fetchReleaseDatesSaga);
+    yield takeEvery(RootActions.SyncStatusRequested, fetchSyncStatusSaga);
 }
 
 function* fetchOrganisationInfoSaga (action: IUserAction<RootActions.OrganisationInfoRequested, { releaseDate: string }>) {
@@ -59,6 +61,15 @@ function* fetchReleaseDatesSaga (action: AnyAction) {
         const payload: IDataResponse<IContributor[]> = yield call(fetchReleaseDates);
         yield put({type: RootActions.ReleaseDatesFulfilled, payload});
 
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function* fetchSyncStatusSaga (action: AnyAction) {
+
+    try {
+        const payload: IDataResponse<IContributor[]> = yield call(fetchSyncStatus);
     } catch (error) {
         console.error(error);
     }

@@ -8,6 +8,8 @@ import {rootSaga} from '../sagas/rootSaga';
 import {rootReducer} from 'src/reducers/rootReducer';
 import {initialCommonState} from '../reducers/initialCommonState';
 import {startRouteListener} from './startRouteListener';
+import * as nes from 'nes';
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,6 +24,20 @@ export const store = createStore(
         )
     )
 );
+
+export const ws = new nes.Client('ws://localhost:8000');
+ws.connect().then(() => {
+    ws.subscribe('/sync/status', (update, flags) => {
+        console.log(update);
+        console.log(flags);
+    });
+});
+
+/*
+wsConnection.connect().then(() => {
+    wsConnection.request('hello');  // Can also request '/h'
+});
+*/
 
 sagaMiddleware.run(rootSaga);
 startRouteListener(history, store);

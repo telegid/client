@@ -16,5 +16,7 @@ export enum RootActions {
     ChannelInfoFulfilled = 'RootActions.ChannelInfoFulfilled',
 
     ReleaseDatesRequested = 'RootActions.ReleaseDatesRequested',
-    ReleaseDatesFulfilled = 'RootActions.ReleaseDatesFulfilled'
+    ReleaseDatesFulfilled = 'RootActions.ReleaseDatesFulfilled',
+
+    SyncStatusRequested = 'RootActions.SyncStatusRequested',
 }

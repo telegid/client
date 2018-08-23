@@ -40,7 +40,7 @@ export const SyncView = (props: IChannelsViewProps) => {
         <>
             <ChannelsViewArea>
 
-                <Button><Icon type={'reload'}/>Обновить</Button>
+                <Button onClick={props.actions.requestSyncStatus}><Icon type={'reload'}/>Обновить</Button>
                 {/*
                 <Table
                     dataSource={channelsData}
