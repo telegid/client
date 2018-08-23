@@ -2,7 +2,7 @@ import {IOrganisationInfo} from 'src/interfaces/IOrganisationInfo';
 import {IContributor} from 'src/interfaces/IContributor';
 import {IRateLimits} from 'src/interfaces/IRateLimits';
 
-export interface IOrganisationViewData {
+export interface IChannelsViewData {
     organisationInfo: IOrganisationInfo;
 
     channelRaw: string;

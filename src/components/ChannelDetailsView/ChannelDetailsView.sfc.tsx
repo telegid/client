@@ -42,7 +42,14 @@ export const ChannelDetailsView = (props: IChannelDetailsViewProps) => {
                     </Tabs.TabPane>
 
                     <Tabs.TabPane tab='Настройки' key='settings'>
-                        <ChannelSettingsFormView/>
+                        <ChannelSettingsFormView
+                            data={{channelSettings: {id: '123', label: '1233123'}}}
+                            actions={{
+                                submitChannelSettingsForm: () => {
+                                    console.log('submitChannelSettingsForm');
+                                }
+                            }}
+                        />
                     </Tabs.TabPane>
                 </Tabs>
 

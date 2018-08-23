@@ -1,8 +1,8 @@
 import {Action, Dispatch} from 'redux';
-import {RootActions} from '../../actions/IRootActions';
-import {IOrganisationViewActions} from '../../components/OrganisationView/interfaces/IOrganisationViewActions';
+import {RootActions} from 'src/actions/IRootActions';
+import {IChannelsViewActions} from 'src/components/ChannelsView/interfaces/IChannelsViewActions';
 
-export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: IOrganisationViewActions } => {
+export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: IChannelsViewActions } => {
     return {
         actions: {
             requestOrganisationInfoAction: (payload: any) => {

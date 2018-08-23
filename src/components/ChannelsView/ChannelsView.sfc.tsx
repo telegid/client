@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {OrganisationViewArea} from './OrganisationView.style';
+import {OrganisationViewArea} from './ChannelsView.style';
 import {ChannelDetailsView} from '../ChannelDetailsView/ChannelDetailsView.sfc';
-import {IOrganisationViewData} from './interfaces/IOrganisationViewData';
-import {IOrganisationViewActions} from './interfaces/IOrganisationViewActions';
+import {IChannelsViewData} from './interfaces/IChannelsViewData';
+import {IChannelsViewActions} from './interfaces/IChannelsViewActions';
 import {Route, RouteComponentProps, Switch} from 'react-router';
 import {OrganisationDetailsView} from '../OrganisationDetailsView/OrganisationDetailsView';
 import {HeaderView} from '../HeaderView/HeaderView.sfc';
@@ -11,11 +11,11 @@ import {Config} from 'src/config';
 import {SidebarContainer} from 'src/containers/SidebarContainer/SidebarContainer';
 
 export interface IOrganisationViewProps extends RouteComponentProps<any> {
-    data: IOrganisationViewData;
-    actions: IOrganisationViewActions;
+    data: IChannelsViewData;
+    actions: IChannelsViewActions;
 }
 
-export const OrganisationView = (props: IOrganisationViewProps) => {
+export const ChannelsView = (props: IOrganisationViewProps) => {
 
     const {releaseDate} = props.match.params;
     const {

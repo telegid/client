@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {OrganisationContainer} from '../OrganisationContainer/OrganisationContainer';
+import {ChannelsContainer} from '../ChannelsContainer/ChannelsContainer';
 import {SidebarContainer} from '../SidebarContainer/SidebarContainer';
 import {Redirect, Route, Switch} from 'react-router';
 import {Config} from '../../config';
@@ -11,12 +11,8 @@ export const RootContainer = () =>
             <Switch>
 
                 <Route path={Config.Routes.Organisation}
-                       component={OrganisationContainer}
+                       component={ChannelsContainer}
                 />
-
-                <Route exact path={Config.Routes.Home}>
-                    <Redirect to={Config.Routes.DefaultOrganisation}/>
-                </Route>
 
                 <Route component={EmptyView}
                 />
